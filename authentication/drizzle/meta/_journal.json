@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1755118935954,
+      "tag": "0000_sharp_master_chief",
+      "breakpoints": true
+    }
+  ]
+}
