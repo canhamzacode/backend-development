@@ -1,0 +1,2 @@
+2025-08-15T23:54:11.593Z error: Error finding user by email or name Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token" from "users" where ("users"."email" = $1 or "users"."name" = $2)
+params: test@test.com,test

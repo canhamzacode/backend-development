@@ -8,3 +8,10 @@
 2025-08-15T19:07:22.964Z info: Server listening on port 3000
 2025-08-15T19:09:36.681Z info: Server listening on port 3000
 2025-08-15T19:09:52.847Z info: Server listening on port 3000
+2025-08-15T23:38:54.462Z info: Server listening on port 3000
+2025-08-15T23:48:18.926Z info: Server listening on port 3000
+2025-08-15T23:52:34.429Z info: Server listening on port 3000
+2025-08-15T23:54:05.911Z info: Server listening on port 3000
+2025-08-15T23:54:11.593Z error: Error finding user by email or name Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token" from "users" where ("users"."email" = $1 or "users"."name" = $2)
+params: test@test.com,test
+2025-08-15T23:56:53.878Z info: Server listening on port 3000

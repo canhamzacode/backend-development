@@ -1,8 +1,8 @@
 import { Request, Response, Router } from 'express';
 import { HTTP_STATUS } from '../constants';
-import { login, me, register } from '@/controllers';
-import { authenticate, validate } from '@/middlewares';
-import { userLoginSchema, registerUserSchema } from '@/utils';
+import { login, logout, me, refresh, register } from '@/controllers';
+import { authenticate, loginLimiter, registerLimiter, validate } from '@/middlewares';
+import { userLoginSchema, registerUserSchema, refreshTokenSchema } from '@/utils';
 
 const router = Router();
 
@@ -12,8 +12,10 @@ router.get('/', (req: Request, res: Response) => {
   });
 });
 
-router.route('/auth/register').post(validate(registerUserSchema), register);
-router.route('/auth/login').post(validate(userLoginSchema), login);
+router.route('/auth/register').post(registerLimiter, validate(registerUserSchema), register);
+router.route('/auth/login').post(loginLimiter, validate(userLoginSchema), login);
 router.route('/auth/me').get(authenticate, me);
+router.route('/auth/refresh').post(validate(refreshTokenSchema), refresh);
+router.route('/auth/logout').get(authenticate, logout);
 
 export default router;
