@@ -8,7 +8,10 @@ export const findUserByEmail = async (email: string): Promise<User | null> => {
     const [user] = await db.select().from(users).where(eq(users.email, email));
     return user || null;
   } catch (error) {
-    throw new Error('Error finding user by email');
+    console.error('findUserByEmail error:', error);
+    throw new Error(
+      `Error finding user by email: ${error instanceof Error ? error.message : error}`
+    );
   }
 };
 
@@ -20,7 +23,9 @@ export const findUserByEmailOrName = async (email: string, name: string): Promis
       .where(or(eq(users.email, email), eq(users.name, name)));
     return user || null;
   } catch (error) {
-    throw new Error('Error finding user by email');
+    throw new Error(
+      `Error finding user by email or name ${error instanceof Error ? error.message : error}`
+    );
   }
 };
 
@@ -29,7 +34,7 @@ export const findUserById = async (id: string): Promise<User | null> => {
     const [user] = await db.select().from(users).where(eq(users.id, id));
     return user || null;
   } catch (error) {
-    throw new Error('Error finding user by id');
+    throw new Error(`Error finding user by id ${error instanceof Error ? error.message : error}`);
   }
 };
 
@@ -45,6 +50,6 @@ export const createUser = async (name: string, email: string, password: string):
       .returning();
     return user;
   } catch (error) {
-    throw new Error('Error creating user');
+    throw new Error(`Error creating user ${error instanceof Error ? error.message : error}`);
   }
 };

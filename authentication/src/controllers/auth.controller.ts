@@ -19,30 +19,22 @@ interface AuthenticatedRequest extends Request {
 }
 
 const register = async (req: Request<{}, {}, RegisterUserInput>, res: Response) => {
-  try {
-    const { email, name, password } = req.body;
-    const existingUser = await findUserByEmailOrName(email, name);
+  const { email, name, password } = req.body;
+  const existingUser = await findUserByEmailOrName(email, name);
 
-    if (existingUser) {
-      res.status(HTTP_STATUS.CONFLICT.code).json({
-        message: 'User with this email already exists'
-      });
-      return;
-    }
-
-    const hashed = await hashPassword(password);
-    const newUser = await createUser(name, email, hashed);
-
-    res.status(HTTP_STATUS.CREATED.code).json({
-      message: 'User created successfully',
-      data: { userId: newUser.id }
-    });
-  } catch (error) {
-    logger.error(error);
-    res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR.code).json({
-      message: HTTP_STATUS.INTERNAL_SERVER_ERROR.message
+  if (existingUser) {
+    return res.status(HTTP_STATUS.CONFLICT.code).json({
+      message: 'User with this email already exists'
     });
   }
+
+  const hashed = await hashPassword(password);
+  const newUser = await createUser(name, email, hashed);
+
+  return res.status(HTTP_STATUS.CREATED.code).json({
+    message: 'User created successfully',
+    data: { userId: newUser.id }
+  });
 };
 
 const login = async (req: Request<{}, {}, LoginUserInput>, res: Response) => {
@@ -58,10 +50,9 @@ const login = async (req: Request<{}, {}, LoginUserInput>, res: Response) => {
 
   const isPasswordCorrect = await bcrypt.compare(password, user.password);
   if (!isPasswordCorrect) {
-    res.status(HTTP_STATUS.UNAUTHORIZED.code).json({
+    return res.status(HTTP_STATUS.UNAUTHORIZED.code).json({
       message: 'Invalid email or password'
     });
-    return;
   }
 
   const token = generateToken({ userId: user.id, email: user.email });
@@ -72,56 +63,42 @@ const login = async (req: Request<{}, {}, LoginUserInput>, res: Response) => {
     name: user.name
   };
 
-  res.status(HTTP_STATUS.OK.code).json({
+  return res.status(HTTP_STATUS.OK.code).json({
     message: 'Login successful',
     data: {
       token,
-      data: userResponse
+      user: userResponse
     }
   });
-  try {
-  } catch (error) {
-    logger.error(error);
-    res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR.code).json({
-      message: HTTP_STATUS.INTERNAL_SERVER_ERROR.message
-    });
-  }
 };
 
 const me = async (req: AuthenticatedRequest, res: Response) => {
-  try {
-    if (!req.user?.userId) {
-      res.status(HTTP_STATUS.UNAUTHORIZED.code).json({
-        message: 'Not authenticated'
-      });
-      return;
-    }
-
-    const user = await findUserById(req.user.userId);
-
-    if (!user) {
-      res.status(HTTP_STATUS.NOT_FOUND.code).json({
-        message: 'User not found'
-      });
-      return;
-    }
-
-    const userResponse = {
-      id: user.id,
-      email: user.email,
-      name: user.name
-    };
-
-    res.status(HTTP_STATUS.OK.code).json({
-      message: 'User information retrieved successfully',
-      data: userResponse
+  if (!req.user?.userId) {
+    res.status(HTTP_STATUS.UNAUTHORIZED.code).json({
+      message: 'Not authenticated'
     });
-  } catch (error) {
-    logger.error(error);
-    res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR.code).json({
-      message: HTTP_STATUS.INTERNAL_SERVER_ERROR.message
-    });
+    return;
   }
+
+  const user = await findUserById(req.user.userId);
+
+  if (!user) {
+    res.status(HTTP_STATUS.NOT_FOUND.code).json({
+      message: 'User not found'
+    });
+    return;
+  }
+
+  const userResponse = {
+    id: user.id,
+    email: user.email,
+    name: user.name
+  };
+
+  return res.status(HTTP_STATUS.OK.code).json({
+    message: 'User information retrieved successfully',
+    data: userResponse
+  });
 };
 
 export { register, login, me };
