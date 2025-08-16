@@ -1,2 +1,27 @@
 2025-08-15T23:54:11.593Z error: Error finding user by email or name Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token" from "users" where ("users"."email" = $1 or "users"."name" = $2)
 params: test@test.com,test
+2025-08-16T00:49:29.981Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:49:35.232Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:49:37.066Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:50:26.232Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:55:08.268Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:55:25.492Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:00:15.650Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:00:19.058Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:00:21.171Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:11:55.527Z error: Error sending reset code email: The 'From' address you supplied (amuizz.asynctechs@gmail.com) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages.
+2025-08-16T01:13:00.910Z error: Error sending reset code email: The 'From' address you supplied (amuizz.asynctechs@gmail.com) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages.
+2025-08-16T01:14:26.418Z error: Error sending reset code email: The 'From' address you supplied (amuizz.asynctechs@gmail.com) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages.
+2025-08-16T01:15:00.487Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:16:03.186Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:17:33.802Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:24:54.482Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.

@@ -15,3 +15,74 @@
 2025-08-15T23:54:11.593Z error: Error finding user by email or name Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token" from "users" where ("users"."email" = $1 or "users"."name" = $2)
 params: test@test.com,test
 2025-08-15T23:56:53.878Z info: Server listening on port 3000
+2025-08-16T00:01:05.060Z info: Server listening on port 3000
+2025-08-16T00:01:38.536Z info: Server listening on port 3000
+2025-08-16T00:02:27.119Z info: Server listening on port 3000
+2025-08-16T00:02:42.341Z info: Server listening on port 3000
+2025-08-16T00:02:49.026Z info: Server listening on port 3000
+2025-08-16T00:25:09.785Z info: Server listening on port 3000
+2025-08-16T00:25:34.326Z info: Server listening on port 3000
+2025-08-16T00:25:41.871Z info: Server listening on port 3000
+2025-08-16T00:26:55.872Z info: Server listening on port 3000
+2025-08-16T00:27:43.261Z info: Server listening on port 3000
+2025-08-16T00:28:55.860Z info: Server listening on port 3000
+2025-08-16T00:29:58.202Z info: Server listening on port 3000
+2025-08-16T00:30:45.488Z info: Server listening on port 3000
+2025-08-16T00:31:30.207Z info: Server listening on port 3000
+2025-08-16T00:32:44.397Z info: Server listening on port 3000
+2025-08-16T00:33:38.900Z info: Server listening on port 3000
+2025-08-16T00:34:10.759Z info: Server listening on port 3000
+2025-08-16T00:35:36.968Z info: Server listening on port 3000
+2025-08-16T00:37:02.085Z info: Server listening on port 3000
+2025-08-16T00:37:25.461Z info: Server listening on port 3000
+2025-08-16T00:38:44.771Z info: Server listening on port 3000
+2025-08-16T00:38:51.069Z info: Server listening on port 3000
+2025-08-16T00:39:21.994Z info: Server listening on port 3000
+2025-08-16T00:39:31.581Z info: Server listening on port 3000
+2025-08-16T00:39:50.324Z info: Server listening on port 3000
+2025-08-16T00:39:56.634Z info: Server listening on port 3000
+2025-08-16T00:40:34.638Z info: Server listening on port 3000
+2025-08-16T00:40:48.626Z info: Server listening on port 3000
+2025-08-16T00:46:24.806Z info: Server listening on port 3000
+2025-08-16T00:46:45.384Z info: Server listening on port 3000
+2025-08-16T00:47:11.401Z info: Server listening on port 3000
+2025-08-16T00:49:29.981Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:49:35.232Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:49:37.066Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:50:20.554Z info: Server listening on port 3000
+2025-08-16T00:50:26.232Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:55:08.268Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T00:55:25.492Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:00:04.155Z info: Server listening on port 3000
+2025-08-16T01:00:15.650Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:00:19.058Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:00:21.171Z error: Error finding user by id Failed query: select "id", "name", "email", "password", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."id" = $1
+params: 07bb0db4-fadf-4092-8714-43345d532ac9
+2025-08-16T01:07:04.253Z info: Server listening on port 3000
+2025-08-16T01:07:34.738Z info: Server listening on port 3000
+2025-08-16T01:10:02.289Z info: Server listening on port 3000
+2025-08-16T01:10:12.240Z info: Server listening on port 3000
+2025-08-16T01:11:24.311Z info: Server listening on port 3000
+2025-08-16T01:11:43.581Z info: Server listening on port 3000
+2025-08-16T01:11:55.527Z error: Error sending reset code email: The 'From' address you supplied (amuizz.asynctechs@gmail.com) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages.
+2025-08-16T01:13:00.910Z error: Error sending reset code email: The 'From' address you supplied (amuizz.asynctechs@gmail.com) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages.
+2025-08-16T01:14:26.418Z error: Error sending reset code email: The 'From' address you supplied (amuizz.asynctechs@gmail.com) is not a Sender Signature on your account. Please add and confirm this address in order to be able to use it in the 'From' field of your messages.
+2025-08-16T01:14:41.202Z info: Server listening on port 3000
+2025-08-16T01:15:00.487Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:16:03.186Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:17:33.802Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:21:35.453Z info: Server listening on port 3000
+2025-08-16T01:23:44.174Z info: Server listening on port 3000
+2025-08-16T01:24:33.350Z info: Server listening on port 3000
+2025-08-16T01:24:38.416Z info: Server listening on port 3000
+2025-08-16T01:24:54.482Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
+2025-08-16T01:26:29.964Z info: Server listening on port 3000
+2025-08-16T01:26:46.432Z info: Server listening on port 3000
