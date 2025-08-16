@@ -1,8 +1,18 @@
 import { Request, Response, Router } from 'express';
 import { HTTP_STATUS } from '../constants';
-import { forgotPassword, login, logout, me, refresh, register, resetPassword } from '@/controllers';
+import {
+  adminDashboard,
+  forgotPassword,
+  login,
+  logout,
+  me,
+  refresh,
+  register,
+  resetPassword
+} from '@/controllers';
 import {
   authenticate,
+  authorize,
   loginLimiter,
   passwordResetLimiter,
   registerLimiter,
@@ -15,6 +25,7 @@ import {
   forgotPasswordSchema,
   resetPasswordSchema
 } from '@/utils';
+import { ROLES } from '@/types';
 
 const router = Router();
 
@@ -33,5 +44,6 @@ router
   .route('/auth/forget-password')
   .post(passwordResetLimiter, validate(forgotPasswordSchema), forgotPassword);
 router.route('/auth/reset-password').post(validate(resetPasswordSchema), resetPassword);
+router.get('/admin/dashboard', authenticate, authorize(ROLES.ADMIN), adminDashboard);
 
 export default router;

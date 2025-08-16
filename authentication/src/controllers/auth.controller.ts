@@ -34,7 +34,7 @@ const register = async (req: Request<{}, {}, RegisterUserInput>, res: Response) 
   }
 
   const hashed = await hashPassword(password);
-  const newUser = await createUser(name, email, hashed);
+  const newUser = await createUser(name, email, hashed, 'user');
 
   return res.status(HTTP_STATUS.CREATED.code).json({
     message: 'User created successfully',
@@ -60,15 +60,19 @@ const login = async (req: Request<{}, {}, LoginUserInput>, res: Response) => {
     });
   }
 
-  const access_token = generateToken({ userId: user.id, email: user.email });
-  const refresh_token = generateToken({ userId: user.id, email: user.email }, 'refresh_token');
+  const access_token = generateToken({ userId: user.id, email: user.email, role: user.role });
+  const refresh_token = generateToken(
+    { userId: user.id, email: user.email, role: user.role },
+    'refresh_token'
+  );
 
   await db.update(users).set({ refresh_token }).where(eq(users.id, user.id));
 
   const userResponse = {
     id: user.id,
     email: user.email,
-    name: user.name
+    name: user.name,
+    role: user.role
   };
 
   return res.status(HTTP_STATUS.OK.code).json({
@@ -101,7 +105,8 @@ const me = async (req: AuthenticatedRequest, res: Response) => {
   const userResponse = {
     id: user.id,
     email: user.email,
-    name: user.name
+    name: user.name,
+    role: user.role
   };
 
   return res.status(HTTP_STATUS.OK.code).json({
@@ -122,8 +127,11 @@ const refresh = async (req: Request, res: Response) => {
     });
   }
 
-  const new_access_token = generateToken({ userId: user.id, email: user.email });
-  const new_refresh_token = generateToken({ userId: user.id, email: user.email }, 'refresh_token');
+  const new_access_token = generateToken({ userId: user.id, email: user.email, role: user.role });
+  const new_refresh_token = generateToken(
+    { userId: user.id, email: user.email, role: user.role },
+    'refresh_token'
+  );
 
   await db.update(users).set({ refresh_token: new_refresh_token }).where(eq(users.id, user.id));
 
@@ -204,4 +212,10 @@ const resetPassword = async (req: Request<{}, {}, ResetPassword>, res: Response)
   return res.status(HTTP_STATUS.OK.code).json({ message: 'Password reset successful.' });
 };
 
-export { register, login, me, refresh, logout, forgotPassword, resetPassword };
+const adminDashboard = (req: Request, res: Response) => {
+  res.status(HTTP_STATUS.OK.code).json({
+    message: 'Welcome to the Admin Dashboard!!'
+  });
+};
+
+export { register, login, me, refresh, logout, forgotPassword, resetPassword, adminDashboard };

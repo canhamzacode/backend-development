@@ -1,6 +1,6 @@
 import { db } from '@/db';
 import { users } from '@/db/schema';
-import { User } from '@/types';
+import { Role, User } from '@/types';
 import { eq, or } from 'drizzle-orm';
 import logger from '../logger';
 
@@ -43,14 +43,20 @@ export const findUserById = async (id: string): Promise<User | null> => {
   }
 };
 
-export const createUser = async (name: string, email: string, password: string): Promise<User> => {
+export const createUser = async (
+  name: string,
+  email: string,
+  password: string,
+  role: Role
+): Promise<User> => {
   try {
     const [user] = await db
       .insert(users)
       .values({
         name,
         email,
-        password
+        password,
+        role
       })
       .returning();
     return user;
