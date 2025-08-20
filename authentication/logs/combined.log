@@ -97,3 +97,32 @@ params: 07bb0db4-fadf-4092-8714-43345d532ac9
 2025-08-16T23:01:49.888Z info: Server listening on port 3000
 2025-08-16T23:07:10.675Z error: findUserByEmail error: Failed query: select "id", "name", "email", "password", "role", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."email" = $1
 params: admin@test.com
+2025-08-20T08:59:25.119Z info: Server listening on port 3000
+2025-08-20T09:21:03.347Z info: Server listening on port 3000
+2025-08-20T09:21:29.861Z info: Server listening on port 3000
+2025-08-20T09:23:07.284Z info: Server listening on port 3000
+2025-08-20T09:24:02.263Z info: Server listening on port 3000
+2025-08-20T09:27:29.215Z info: Server listening on port 8001
+2025-08-20T09:31:19.200Z info: Server listening on port 8001
+2025-08-20T09:33:51.430Z info: Server listening on port 8001
+2025-08-20T09:34:49.126Z info: Server listening on port 8001
+2025-08-20T09:36:01.416Z info: Server listening on port 3000
+2025-08-20T09:36:41.035Z info: Server listening on port 3000
+2025-08-20T09:37:34.093Z info: Server listening on port 3000
+2025-08-20T09:37:44.559Z info: Server listening on port 3000
+2025-08-20T09:38:24.261Z info: Server listening on port 3000
+2025-08-20T09:38:31.383Z info: Server listening on port 3000
+2025-08-20T09:39:07.340Z info: Server listening on port 3000
+2025-08-20T09:47:40.205Z info: Server listening on port 3000
+2025-08-20T10:06:45.736Z info: Server listening on port 3000
+2025-08-20T10:07:41.107Z info: Server listening on port 3000
+2025-08-20T10:08:00.711Z info: Server listening on port 3000
+2025-08-20T10:12:58.077Z info: Server listening on port 3000
+2025-08-20T10:13:33.846Z error: findUserByEmail error: Failed query: select "id", "name", "email", "password", "role", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."email" = $1
+params: abdulmuizzayo6@gmail.com
+2025-08-20T10:15:16.122Z info: Server listening on port 3000
+2025-08-20T10:28:42.508Z info: Server listening on port 3000
+2025-08-20T10:29:30.353Z info: Server listening on port 3000
+2025-08-20T10:30:46.326Z info: Server listening on port 3000
+2025-08-20T10:32:44.334Z error: Error finding user by email or name Failed query: select "id", "name", "email", "password", "role", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where ("users"."email" = $1 or "users"."name" = $2)
+params: abdulmuizzayo6@gmail.com,Hamza

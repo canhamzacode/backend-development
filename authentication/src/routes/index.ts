@@ -3,6 +3,8 @@ import { HTTP_STATUS } from '../constants';
 import {
   adminDashboard,
   forgotPassword,
+  googleOauth,
+  googleOauthCallback,
   login,
   logout,
   me,
@@ -45,5 +47,7 @@ router
   .post(passwordResetLimiter, validate(forgotPasswordSchema), forgotPassword);
 router.route('/auth/reset-password').post(validate(resetPasswordSchema), resetPassword);
 router.get('/admin/dashboard', authenticate, authorize(ROLES.ADMIN), adminDashboard);
+router.route('/auth/google').get(googleOauth);
+router.route('/auth/google/callback').get(googleOauthCallback);
 
 export default router;

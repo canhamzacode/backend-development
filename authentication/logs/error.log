@@ -27,3 +27,7 @@ params: 07bb0db4-fadf-4092-8714-43345d532ac9
 2025-08-16T01:24:54.482Z error: Error sending reset code email: While your account is pending approval, all recipient addresses must share the same domain as the 'From' address. The domain of the 'From' address is 'aiesec.net', but you are attempting to send email to the following domain(s): 'gmail.com'.
 2025-08-16T23:07:10.675Z error: findUserByEmail error: Failed query: select "id", "name", "email", "password", "role", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."email" = $1
 params: admin@test.com
+2025-08-20T10:13:33.846Z error: findUserByEmail error: Failed query: select "id", "name", "email", "password", "role", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where "users"."email" = $1
+params: abdulmuizzayo6@gmail.com
+2025-08-20T10:32:44.334Z error: Error finding user by email or name Failed query: select "id", "name", "email", "password", "role", "created_at", "updated_at", "refresh_token", "reset_password_token", "reset_password_expires" from "users" where ("users"."email" = $1 or "users"."name" = $2)
+params: abdulmuizzayo6@gmail.com,Hamza
