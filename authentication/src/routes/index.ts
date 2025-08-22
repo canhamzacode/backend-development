@@ -49,5 +49,7 @@ router.route('/auth/reset-password').post(validate(resetPasswordSchema), resetPa
 router.get('/admin/dashboard', authenticate, authorize(ROLES.ADMIN), adminDashboard);
 router.route('/auth/google').get(googleOauth);
 router.route('/auth/google/callback').get(googleOauthCallback);
+router.route('/auth/facebook').get(googleOauth);
+router.route('/auth/facebook/callback').get(googleOauthCallback);
 
 export default router;

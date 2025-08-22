@@ -1,33 +1,39 @@
-import { Request, Response } from 'express';
 import { HTTP_STATUS } from '@/constants';
-import { upsertGoogleUser, exchangeCodeForTokens, verifyGoogleIdToken } from '@/services';
-import { generateToken } from '@/utils';
 import { db } from '@/db';
 import { users } from '@/db/schema';
+import {
+  exchangeFacebookCodeForTokens,
+  generateToken,
+  getFacebookUserProfile,
+  upsertFacebookUser
+} from '@/utils';
 import { eq } from 'drizzle-orm';
+import { Request, Response } from 'express';
 
-export const googleOauth = async (_req: Request, res: Response) => {
-  const base = 'https://accounts.google.com/o/oauth2/v2/auth';
+export const facebookOauth = async (_req: Request, res: Response) => {
+  const base = 'https://www.facebook.com/v18.0/dialog/oauth';
   const params = new URLSearchParams({
-    client_id: process.env.CLIENT_ID!,
-    redirect_uri: process.env.REDIRECT_URI!,
+    client_id: process.env.FACEBOOK_CLIENT_ID!,
+    redirect_uri: process.env.FACEBOOK_REDIRECT_URI!,
     response_type: 'code',
-    scope: 'profile email'
+    scope: 'email,public_profile'
   });
+
   res.redirect(`${base}?${params.toString()}`);
 };
 
-export const googleOauthCallback = async (req: Request, res: Response) => {
+export const facebookOauthCallback = async (req: Request, res: Response) => {
   const code = req.query.code as string | undefined;
   if (!code) return res.status(HTTP_STATUS.BAD_REQUEST.code).json({ error: 'Missing code' });
 
   try {
-    const { id_token } = await exchangeCodeForTokens(code);
-    const googleUser = await verifyGoogleIdToken(id_token);
-    if (!googleUser?.email)
-      return res.status(HTTP_STATUS.BAD_REQUEST.code).json({ error: 'Google login failed' });
+    const { access_token } = await exchangeFacebookCodeForTokens(code);
 
-    const user = await upsertGoogleUser(googleUser);
+    const fbUser = await getFacebookUserProfile(access_token);
+    if (!fbUser?.email)
+      return res.status(HTTP_STATUS.BAD_REQUEST.code).json({ error: 'Facebook login failed' });
+
+    const user = await upsertFacebookUser(fbUser);
 
     const access = generateToken({ userId: user.id, email: user.email, role: user.role });
     const refresh = generateToken(
@@ -45,6 +51,8 @@ export const googleOauthCallback = async (req: Request, res: Response) => {
       }
     });
   } catch (e: any) {
-    return res.status(500).json({ error: 'Google authentication failed' });
+    return res
+      .status(HTTP_STATUS.INTERNAL_SERVER_ERROR.code)
+      .json({ error: 'Facebook authentication failed' });
   }
 };
